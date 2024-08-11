@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11 jun 2024, 15:01:16 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="Celcius.Cliente" table="cliente" catalog="musicstore" optimistic-lock="version">
+        <id name="idCliente" type="int">
+            <column name="idCliente" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreCompleto" type="string">
+            <column name="NombreCompleto" length="60" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="100" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="Correo" length="25" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="15" not-null="true" />
+        </property>
+        <property name="foto" type="string">
+            <column name="Foto" length="20" not-null="true" />
+        </property>
+        <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCliente" not-null="true" />
+            </key>
+            <one-to-many class="Celcius.Venta" />
+        </set>
+    </class>
+</hibernate-mapping>

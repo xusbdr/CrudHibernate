@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11 jun 2024, 15:01:16 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="Celcius.Venta" table="venta" catalog="musicstore" optimistic-lock="version">
+        <id name="idVenta" type="java.lang.Integer">
+            <column name="idVenta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="album" class="Celcius.Album" fetch="select">
+            <column name="idAlbum" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cliente" class="Celcius.Cliente" fetch="select">
+            <column name="idCliente" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11 jun 2024, 15:01:16 by Hibernate Tools 4.3.6.Final -->
+<hibernate-mapping>
+    <class name="Celcius.Artista" table="artista" catalog="musicstore" optimistic-lock="version">
+        <id name="idArtista" type="int">
+            <column name="idArtista" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreArtista" type="string">
+            <column name="NombreArtista" length="60" not-null="true" />
+        </property>
+        <set name="albums" table="album" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idArtista" not-null="true" />
+            </key>
+            <one-to-many class="Celcius.Album" />
+        </set>
+    </class>
+</hibernate-mapping>
